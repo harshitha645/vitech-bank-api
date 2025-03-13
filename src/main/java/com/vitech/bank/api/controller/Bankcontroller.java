@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vitech.bank.api.model.Bankmodel;
 import com.vitech.bank.api.service.Bankservice;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/bankdetails")
 
@@ -27,6 +30,7 @@ public class Bankcontroller {
 	@PostMapping("/createAccount")
 	public ResponseEntity<String> insertBankdata(@RequestBody Bankmodel bankmodel) {
 		System.out.println("insertBankdata:: input recived - "+ bankmodel);
+
      try {
 		String result=	bankservice.createBankdata(bankmodel);
 		return ResponseEntity.ok(result);
