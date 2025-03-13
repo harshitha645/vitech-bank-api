@@ -29,25 +29,24 @@ public class Bankcontroller {
 	public Bankservice bankservice;
 	@PostMapping("/createAccount")
 	public ResponseEntity<String> insertBankdata(@RequestBody Bankmodel bankmodel) {
-		System.out.println("insertBankdata:: input recived - "+ bankmodel);
-
+        log.info("insertBankdata:: input recived - {}", bankmodel);
      try {
 		String result=	bankservice.createBankdata(bankmodel);
 		return ResponseEntity.ok(result);
      }catch(Exception e) {
-		System.out.println("Error occured:" + e.getMessage());
+		log.error("Error occured: {}" , e.getMessage());
 		return  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while processing the request");
      }
 	}
 	 @PutMapping("/deposit")
 	    public ResponseEntity<String> depositAmount(@RequestBody Bankmodel bankmodel) {
-	        System.out.println("depositAmount:: input received - " + bankmodel);
+	        log.info("depositAmount:: input received - {}" , bankmodel);
 
 	        try {
 	            String result = bankservice.depositToAccount(bankmodel);
 	            return ResponseEntity.ok(result);
 	        } catch (Exception e) {
-	            System.out.println("Error occurred: " + e.getMessage());
+	            log.error("Error occurred: {}" ,e.getMessage());
 	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 	                    .body("An error occurred while processing the deposit request.");
 	        }

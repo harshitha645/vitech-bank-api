@@ -9,8 +9,10 @@ import com.vitech.bank.api.model.Bankmodel;
 import com.vitech.bank.api.repository.Bankrepo;
 import com.vitech.bank.api.service.Bankservice;
 
-@Service
+import lombok.extern.slf4j.Slf4j;
 
+@Service
+@Slf4j
 public class Bankserviceimpl implements Bankservice {
 	
 	@Autowired
@@ -19,7 +21,8 @@ public class Bankserviceimpl implements Bankservice {
 
 	@Override
 	public String createBankdata(Bankmodel bankmodel) {
-	    System.out.println("save bankdata : start");
+	    log.info("save bankdata : start");
+	    
 	    Optional<Bankmodel>existingBank = bankrepo.findByAccountNumAndBank(bankmodel.getAccountNum(),bankmodel.getBank());
 	    
 	    if(existingBank.isPresent()) {
@@ -31,7 +34,7 @@ public class Bankserviceimpl implements Bankservice {
 
 	@Override
     public String depositToAccount(Bankmodel bankmodel) {
-        System.out.println("depositToAccount: start");
+        log.info("depositToAccount: start");
 
         // Validate input account number and bank
         if (bankmodel.getAccountNum() == null || bankmodel.getBank() == null) {

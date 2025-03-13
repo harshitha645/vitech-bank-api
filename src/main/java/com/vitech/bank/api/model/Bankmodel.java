@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -15,8 +14,6 @@ import lombok.Data;
 
 public class Bankmodel {
 	@Id
-//   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_seq")
-//    @SequenceGenerator(name = "customer_seq", sequenceName = "customer_sequence",allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Corrected to use proper strategy
     private Integer id;
 	private String customerName;

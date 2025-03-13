@@ -16,6 +16,7 @@ public interface Bankservice {
 	String getBalance(String bank, String type, Long accountNum, Integer atmPin);
 
 	String withdrawAmount(String bank, String type, Long accountNum, Integer atmPin, Integer amountToBeWithdraw);
+
 	
 	
 

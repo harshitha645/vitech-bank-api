@@ -3,8 +3,6 @@ package com.vitech.bank.api.repository;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.vitech.bank.api.model.Bankmodel;
@@ -16,9 +14,7 @@ public interface Bankrepo extends JpaRepository<Bankmodel, Integer> { // Changed
 
 	Optional<Bankmodel> findByBankAndTypeAndAccountNumAndAtmPin(String bank, String type, long long1, int int1);
 	
-	@Query(value = "SELECT * FROM customers WHERE ACCOUNT_NUM = :accountNum AND bank = :bank", nativeQuery = true)
-	  Optional<Bankmodel> findByAcctNumAndBank(@Param("accountNum") Double accountNum, @Param("bank") String bank);
-
+	
 }
 
  
