@@ -14,6 +14,10 @@ public interface Bankrepo extends JpaRepository<Bankmodel, Integer> { // Changed
 
 	Optional<Bankmodel> findByBankAndTypeAndAccountNumAndAtmPin(String bank, String type, long long1, int int1);
 	
+	//Optional<Bankmodel> findByAadharno(String aadharno);
+
+	Optional<Bankmodel> findByAccountNum(Long accountNum);
+	
 	
 }
 
